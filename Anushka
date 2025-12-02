@@ -1,0 +1,28 @@
+#1. Data Drift / Batch Drift EDA (Very Important for ML Ops)
+# Detect drift over time (if timestamp or date exists)
+time_col = "timestamp"   # change this to your date column
+df[time_col] = pd.to_datetime(df[time_col])
+
+# Compare distribution by month
+df["month"] = df[time_col].dt.to_period("M")
+
+for col in df.select_dtypes(include=['float','int']).columns[:5]:
+    plt.figure(figsize=(10,5))
+    sns.boxplot(x=df["month"].astype(str), y=df[col])
+    plt.xticks(rotation=45)
+    plt.title(f"Distribution Drift of {col} Over Time")
+    plt.show()
+
+#2. Target Leakage Check
+leakage_df = df.corr()[target_col].sort_values(ascending=False)
+print("Potential Leakage Indicators:")
+display(leakage_df.head(10))
+
+#3 Feature Stability / Sensor Drift Detection
+for col in df.select_dtypes(include=['float','int']).columns[:5]:
+    plt.figure(figsize=(12,4))
+    plt.plot(df[col])
+    plt.title(f"Sensor Drift Check: {col}")
+    plt.xlabel("Index")
+    plt.ylabel(col)
+    plt.show()
