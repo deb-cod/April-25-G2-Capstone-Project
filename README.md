@@ -19,5 +19,5 @@ The dataset consists of 10 000 data points stored as rows with 14 features in co
 and a **machine failure** label that indicates, whether the machine has failed in this particular data point for any of the following failure modes are true.
 
 ### Important : There are two Targets - Do not make the mistake of using one of them as feature, as it will lead to leakage.
-Target : Failure or Not
-Failure Type : Type of Failure
+- Target : Failure or Not
+- Failure Type : Type of Failure
