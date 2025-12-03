@@ -21,3 +21,6 @@ and a **machine failure** label that indicates, whether the machine has failed i
 ### Important : There are two Targets - Do not make the mistake of using one of them as feature, as it will lead to leakage.
 - Target : Failure or Not
 - Failure Type : Type of Failure
+
+
+CHANGES ARE DONE HERE
